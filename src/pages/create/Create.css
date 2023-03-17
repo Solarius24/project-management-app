@@ -1,0 +1,9 @@
+.create-form {
+  width: 60vw;
+  padding: 20px;
+  background-color: #9cf;
+}
+.create-form-container {
+  display: flex;
+  flex-direction: row;
+}
