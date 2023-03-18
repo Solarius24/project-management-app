@@ -76,7 +76,10 @@ export default function Create() {
       dueDate: timestamp.fromDate(new Date(dueDate)),
       assignedUsersList, 
       createdBy,
-      comments: []
+      comments: [],
+      projectStatus: "live",
+      complitionDate:null,
+      
     }
     await addDocument(project)
     if(!response.error){

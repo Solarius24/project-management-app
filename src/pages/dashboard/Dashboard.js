@@ -20,8 +20,12 @@ export default function Dashboard() {
     setCurrentFilter(newFilter);
   };
 
-  const projects = documents
-    ? documents.filter((document) => {
+const project1 = documents ? documents.filter((document) => {
+   return document.projectStatus === "live" 
+}) : null;
+
+  const projects = project1
+    ? project1.filter((document) => {
         switch (currentFilter) {
           case "all":
             return true;
@@ -37,7 +41,6 @@ export default function Dashboard() {
           case "design":
           case "sales":
           case "marketing":
-            console.log(document.category, currentFilter);
             return document.category === currentFilter;
           default:
             return true;

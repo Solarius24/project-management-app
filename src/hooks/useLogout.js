@@ -7,12 +7,14 @@ import { db } from "../firebase/config";
 export const useLogout = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
-  const [isPending, setIsPending] = useState(false);
+  const [isPendingLogout, setIsPendingLogout] = useState(false);
   const { dispatch, user } = useAuthContext();
 
   const logout = async () => {
+    console.log("logout called")
     setError(null);
-    setIsPending(true);
+    setIsPendingLogout(true);
+  
 
     try {
       //update online status
@@ -31,20 +33,21 @@ export const useLogout = () => {
 
       //update state
       if (!isCancelled) {
-        setIsPending(false);
+        setIsPendingLogout(false);
         setError(null);
       }
     } catch (err) {
       if (!isCancelled) {
         setError(err.message);
-        setIsPending(false);
+        setIsPendingLogout(false);
       }
     }
   };
 
   useEffect(() => {
+    console.log("useEffect")
     return () => setIsCancelled(true);
   }, []);
 
-  return { logout, error, isPending };
+  return { logout, error, isPendingLogout };
 };

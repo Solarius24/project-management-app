@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import DashboardIcon from "../assets/dashboard_icon.svg";
 import AddIcon from "../assets/add_icon.svg";
+import ProjectComplitedIcon from "../assets/project-completed-icon.svg"
 import Avatar from "./Avatar";
 import useAuthContext from "../hooks/useAuthContext";
 
@@ -26,14 +27,18 @@ export default function Sidebar() {
               </NavLink>
             </li>
             <li>
+            <NavLink to="/completed_projects">
+                <img src={ProjectComplitedIcon} alt="add project icon" />
+                <span>Completed Projects</span>
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/create">
                 <img src={AddIcon} alt="add project icon" />
                 <span>New Project</span>
               </NavLink>
             </li>
-            <li>
-              Completed Projects
-            </li>
+
           </ul>
         </nav>
       </div>

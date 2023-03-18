@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "../../hooks/useLogin";
 
-// styles
 import "./Login.css";
 
 export default function Login() {

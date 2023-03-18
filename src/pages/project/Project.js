@@ -4,8 +4,8 @@ import Sidebar from "../../components/Sidebar";
 import useAuthContext from "../../hooks/useAuthContext";
 
 // components
-import ProjectComments from "./ProjectComments";
-import ProjectSummary from "./ProjectSummary";
+import ProjectComments from "../../components/ProjectComments"
+import ProjectSummary from "../../components/ProjectSummary"
 
 // styles
 import "./Project.css";
