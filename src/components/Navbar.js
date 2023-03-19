@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
 // styles & images
 import "./Navbar.css";
 import Temple from "../assets/temple.svg";
+//hooks
 import { useLogout } from "../hooks/useLogout";
-import useAuthContext from "../hooks/useAuthContext";
-
+//libraries
+import { Link } from "react-router-dom";
+//context
+import {useAuthContext} from "../context/AuthContext";
 
 export default function Navbar() {
-  const { logout, isPendingLogout } = useLogout();
-  const { user } = useAuthContext()
-  console.log(isPendingLogout)
-  console.log('logout', logout)
+  const { logout } = useLogout();
+  const { currentUser } = useAuthContext();
   return (
     <nav className="navbar">
       <ul>
@@ -19,7 +19,7 @@ export default function Navbar() {
           <span>PROJECT MANAGEMENT SYSTEM</span>
         </li>
 
-        {!user && (
+        {!currentUser && (
           <>
             <li>
               <Link to="/login">Login</Link>
@@ -29,18 +29,11 @@ export default function Navbar() {
             </li>
           </>
         )}
-        {user && (
+        {currentUser && (
           <li>
-            {!isPendingLogout && (
-              <button className="btn" onClick={logout}>
-                Logout
-              </button>
-            )}
-            {isPendingLogout && (
-              <button className="btn" disabled>
-                Logging out...
-              </button>
-            )}
+            <button className="btn" onClick={logout}>
+              Logout
+            </button>
           </li>
         )}
       </ul>

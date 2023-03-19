@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from "../firebase/config";
 import useAuthContext from "./useAuthContext";
@@ -6,14 +6,11 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 
 export const useSignup = () => {
-  const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
-  const [isPending, setIsPending] = useState(false);
-  const { dispatch } = useAuthContext();
+
 
   const signup = async (email, password, displayName, thumbnail) => {
     setError(null);
-    setIsPending(true);
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -33,34 +30,18 @@ export const useSignup = () => {
         displayName: displayName,
         photoURL: imgUrl,
       });
+      
 
       //create user document
 
-     await setDoc(doc(db, "users",res.user.uid), {
-      online: true,
-      displayName,
-      photoURL: imgUrl,
-    });
-
-
-      //Dispatch login action
-      dispatch({ type: "LOGIN", payload: res.user });
-
-      if (!isCancelled) {
-        setIsPending(false);
-        setError(null);
-      }
+      await setDoc(doc(db, "users", res.user.uid), {
+        online: true,
+        displayName,
+        photoURL: imgUrl,
+      });
     } catch (err) {
-      if (!isCancelled) {
-        setError(err.message);
-        setIsPending(false);
-      }
+      setError(err.message);
     }
   };
-
-  useEffect(() => {
-    return () => setIsCancelled(true);
-  }, []);
-
-  return { signup, error, isPending };
+  return { signup, error };
 };

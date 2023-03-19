@@ -1,18 +1,18 @@
+// styles
+import "./Dashboard.css";
+//hooks
 import { useCollection } from "../../hooks/useCollection";
 import { useState } from "react";
-import useAuthContext from "../../hooks/useAuthContext";
-
+//context
+import { useAuthContext } from "../../context/AuthContext";
 // components
 import ProjectList from "../../components/ProjectList";
 import ProjectFilter from "./ProjectFilter";
 import Sidebar from "../../components/Sidebar";
 import OnlineUsers from "../../components/OnlineUsers";
 
-// styles
-import "./Dashboard.css";
-
 export default function Dashboard() {
-  const { user } = useAuthContext();
+  const { currentUser } = useAuthContext();
   const { documents, error } = useCollection("projects");
   const [currentFilter, setCurrentFilter] = useState("all");
 
@@ -20,9 +20,11 @@ export default function Dashboard() {
     setCurrentFilter(newFilter);
   };
 
-const project1 = documents ? documents.filter((document) => {
-   return document.projectStatus === "live" 
-}) : null;
+  const project1 = documents
+    ? documents.filter((document) => {
+        return document.projectStatus === "live";
+      })
+    : null;
 
   const projects = project1
     ? project1.filter((document) => {
@@ -32,7 +34,7 @@ const project1 = documents ? documents.filter((document) => {
           case "mine":
             let assignedToMe = false;
             document.assignedUsersList.forEach((u) => {
-              if (u.id === user.uid) {
+              if (u.id === currentUser.uid) {
                 assignedToMe = true;
               }
             });
@@ -50,9 +52,8 @@ const project1 = documents ? documents.filter((document) => {
 
   return (
     <div className="dashboard-container">
-      {user && <Sidebar />}
+      {currentUser && <Sidebar />}
       <div className="dashboard-project-list">
-        {/* <h2 className="page-title">Dashboard</h2> */}
         {error && <p className="error">{error}</p>}
 
         {documents && (
@@ -63,7 +64,7 @@ const project1 = documents ? documents.filter((document) => {
         )}
         {projects && <ProjectList projects={projects} />}
       </div>
-      {user && <OnlineUsers />}
+      {currentUser && <OnlineUsers />}
     </div>
   );
 }

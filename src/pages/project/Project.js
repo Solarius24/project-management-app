@@ -1,19 +1,19 @@
-import { useParams } from "react-router-dom";
-import { useDocument } from "../../hooks/useDocument";
-import Sidebar from "../../components/Sidebar";
-import useAuthContext from "../../hooks/useAuthContext";
-
-// components
-import ProjectComments from "../../components/ProjectComments"
-import ProjectSummary from "../../components/ProjectSummary"
-
 // styles
 import "./Project.css";
+//hooks
+import { useParams } from "react-router-dom";
+import { useDocument } from "../../hooks/useDocument";
+//context
+import { useAuthContext } from "../../context/AuthContext";
+// components
+import ProjectComments from "../../components/ProjectComments";
+import ProjectSummary from "../../components/ProjectSummary";
+import Sidebar from "../../components/Sidebar";
 
 export default function Project() {
   const { id } = useParams();
   const { document, error } = useDocument("projects", id);
-  const { user } = useAuthContext();
+  const { currentUser } = useAuthContext();
 
   if (error) {
     return <div className="error">{error}</div>;
@@ -24,7 +24,7 @@ export default function Project() {
 
   return (
     <div className="project-container">
-      {user && <Sidebar />}
+      {currentUser && <Sidebar />}
       <div className="project-details">
         <ProjectSummary project={document} />
         <ProjectComments project={document} />

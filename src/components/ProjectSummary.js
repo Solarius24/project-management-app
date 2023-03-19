@@ -1,13 +1,13 @@
 import Avatar from "./Avatar";
 import useFirestore from "../hooks/useFirestore";
 import { useNavigate } from "react-router-dom";
-import useAuthContext from "../hooks/useAuthContext";
+import {useAuthContext} from ".././context/AuthContext";
 import { timestamp } from "../firebase/config";
 import "./ProjectSummary.css"
 
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore("projects");
-  const { user } = useAuthContext();
+  const { currentUser } = useAuthContext();
   const navigate = useNavigate();
   const { updateDocument } = useFirestore("projects");
 
@@ -45,7 +45,7 @@ export default function ProjectSummary({ project }) {
           ))}
         </div>
       </div>
-      {user.uid === project.createdBy.id &&
+      {currentUser.uid === project.createdBy.id &&
         (project.projectStatus === "live" ? (
           <button className="btn" onClick={handleComplete}>
             Mark as Complete

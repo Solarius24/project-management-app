@@ -1,22 +1,28 @@
-import { useState } from "react";
-import { timestamp } from "../firebase/config";
-import Avatar from "./Avatar";
+//styles
+import "./ProjectComments.css";
+//hooks
 import useFirestore from "../hooks/useFirestore";
-import useAuthContext from "../hooks/useAuthContext";
+import { useState } from "react";
+//components
+import Avatar from "./Avatar";
+//functions
+import { timestamp } from "../firebase/config";
+//context
+import { useAuthContext } from ".././context/AuthContext";
+//libraries
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import "./ProjectComments.css"
 
 export default function ProjectComments({ project }) {
-  const { user } = useAuthContext();
-  const { updateDocument, response } = useFirestore("projects");
+  const { currentUser } = useAuthContext();
+  const { updateDocument } = useFirestore("projects");
   const [newComment, setNewComment] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const commentToAdd = {
-      displayName: user.displayName,
-      photoURL: user.photoURL,
+      displayName: currentUser.displayName,
+      photoURL: currentUser.photoURL,
       content: newComment,
       createdAt: timestamp.fromDate(new Date()),
       id: Math.random(),
@@ -25,9 +31,7 @@ export default function ProjectComments({ project }) {
     await updateDocument(project.id, {
       comments: [...project.comments, commentToAdd],
     });
-    if (!response.error) {
-      setNewComment("");
-    }
+    setNewComment("");
   };
 
   return (
