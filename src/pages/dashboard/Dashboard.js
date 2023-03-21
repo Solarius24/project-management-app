@@ -12,7 +12,7 @@ import Sidebar from "../../components/Sidebar";
 import OnlineUsers from "../../components/OnlineUsers";
 
 export default function Dashboard() {
-  const { currentUser } = useAuthContext();
+  const currentUser = useAuthContext();
   const { documents, error } = useCollection("projects");
   const [currentFilter, setCurrentFilter] = useState("all");
 
@@ -20,14 +20,14 @@ export default function Dashboard() {
     setCurrentFilter(newFilter);
   };
 
-  const project1 = documents
+  const liveProjects = documents
     ? documents.filter((document) => {
         return document.projectStatus === "live";
       })
     : null;
 
-  const projects = project1
-    ? project1.filter((document) => {
+  const projects = liveProjects
+    ? liveProjects.filter((document) => {
         switch (currentFilter) {
           case "all":
             return true;
@@ -49,13 +49,12 @@ export default function Dashboard() {
         }
       })
     : null;
-
+console.log("Dashboard")
   return (
     <div className="dashboard-container">
-      {currentUser && <Sidebar />}
+      {/* {currentUser && <Sidebar/>} */}
       <div className="dashboard-project-list">
         {error && <p className="error">{error}</p>}
-
         {documents && (
           <ProjectFilter
             changeFilter={changeFilter}

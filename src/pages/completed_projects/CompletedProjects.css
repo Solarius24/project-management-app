@@ -3,8 +3,8 @@
     flex-direction: row;
 }
 .completedProjects-list {
-    width:80vw;
-    height: 100vh;
-    background-color: lightgreen;
+    width:75.3vw;
+    height: auto;
+    /* background-color: lightgreen; */
     padding: 10px;
 }

@@ -16,7 +16,7 @@ export default function CompletedProjects() {
 
   return (
     <div className="completedProjects-container">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="completedProjects-list">
         {completedProjects && <ProjectList projects={completedProjects} />}
       </div>

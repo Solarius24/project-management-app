@@ -4,14 +4,21 @@ import Temple from "../assets/temple.svg";
 //hooks
 import { useLogout } from "../hooks/useLogout";
 //libraries
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //context
 import {useAuthContext} from "../context/AuthContext";
 
 export default function Navbar() {
   const { logout } = useLogout();
-  const { currentUser } = useAuthContext();
-  return (
+  const currentUser  = useAuthContext();
+  const navigate = useNavigate()
+  const handleLogout = (e) => {
+    e.preventDefault()
+    logout()
+    navigate("/login")
+
+  }
+   return (
     <nav className="navbar">
       <ul>
         <li className="logo">
@@ -31,7 +38,7 @@ export default function Navbar() {
         )}
         {currentUser && (
           <li>
-            <button className="btn" onClick={logout}>
+            <button className="btn" onClick={handleLogout}>
               Logout
             </button>
           </li>

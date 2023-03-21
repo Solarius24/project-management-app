@@ -7,11 +7,25 @@ import ProjectComplitedIcon from "../assets/project-completed-icon.svg";
 import Avatar from "./Avatar";
 //libraries
 import { NavLink } from "react-router-dom";
-//context
 import { useAuthContext } from "../context/AuthContext";
+//hooks
+import { useCollection } from "../hooks/useCollection";
+import { useEffect, useState } from "react";
 
 export default function Sidebar() {
-  const { currentUser } = useAuthContext();
+  const currentUser = useAuthContext();
+  const { error, documents } = useCollection("users");
+  const [logUser, setLogUser] = useState();
+
+  //check which user from "users" firebase colection is currently login
+
+  // const logUser =
+  //   documents && currentUser
+  //     ? documents.filter((user) => {
+  //         return user.id === currentUser.uid;
+  //       })
+  //     : error;
+
   return (
     <div className="sidebar">
       <div className="sidebar-content">

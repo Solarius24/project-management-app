@@ -7,7 +7,7 @@ import { db } from "../firebase/config";
 export const useLogout = () => {
   const [error, setError] = useState(null);
 
-  const { currentUser } = useAuthContext();
+  const currentUser  = useAuthContext();
 
   const logout = async () => {
     setError(null);

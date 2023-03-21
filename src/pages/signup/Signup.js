@@ -4,6 +4,7 @@ import "./Signup.css";
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
 import { useLogin } from "../../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -18,6 +19,7 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(email, password, displayName, thumbnail);
+  
   };
 
   const handleFileChange = (e) => {

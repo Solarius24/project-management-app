@@ -26,7 +26,7 @@ const categories = [
 
 export default function Create() {
   const { addDocument } = useFirestore("projects");
-  const { currentUser } = useAuthContext();
+  const currentUser = useAuthContext();
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
 
@@ -93,7 +93,7 @@ export default function Create() {
 
   return (
     <div className="create-form-container">
-      {currentUser && <Sidebar />}
+      {/* {currentUser && <Sidebar />} */}
       <div className="create-form">
         <h2 className="page-title">Create a new Project</h2>
         <form onSubmit={handleSubmit}>

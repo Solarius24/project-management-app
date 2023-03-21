@@ -13,7 +13,7 @@ import { useAuthContext } from ".././context/AuthContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 export default function ProjectComments({ project }) {
-  const { currentUser } = useAuthContext();
+  const currentUser  = useAuthContext();
   const { updateDocument } = useFirestore("projects");
   const [newComment, setNewComment] = useState("");
 

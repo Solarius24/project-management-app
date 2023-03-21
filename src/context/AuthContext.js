@@ -1,4 +1,3 @@
-
 //hooks
 import { createContext, useEffect, useState, useContext } from "react";
 //functions
@@ -16,15 +15,15 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      setLoading(false)
+      setLoading(false);
     });
     return unsubscribe;
   }, [currentUser]);
+  console.log("CONTEXT", currentUser)
 
-const value = {
-  currentUser
-}
-console.log(value)
-
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={currentUser}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };

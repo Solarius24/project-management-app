@@ -13,7 +13,7 @@ import Sidebar from "../../components/Sidebar";
 export default function Project() {
   const { id } = useParams();
   const { document, error } = useDocument("projects", id);
-  const { currentUser } = useAuthContext();
+  const currentUser = useAuthContext();
 
   if (error) {
     return <div className="error">{error}</div>;
@@ -24,7 +24,7 @@ export default function Project() {
 
   return (
     <div className="project-container">
-      {currentUser && <Sidebar />}
+      {/* {currentUser && <Sidebar />} */}
       <div className="project-details">
         <ProjectSummary project={document} />
         <ProjectComments project={document} />

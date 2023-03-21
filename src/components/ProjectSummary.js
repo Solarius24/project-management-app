@@ -7,7 +7,7 @@ import "./ProjectSummary.css"
 
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore("projects");
-  const { currentUser } = useAuthContext();
+  const currentUser  = useAuthContext();
   const navigate = useNavigate();
   const { updateDocument } = useFirestore("projects");
 

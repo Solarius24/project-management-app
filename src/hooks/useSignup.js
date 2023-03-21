@@ -1,13 +1,11 @@
-import { useState} from "react";
+import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from "../firebase/config";
-import useAuthContext from "./useAuthContext";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
-
 
   const signup = async (email, password, displayName, thumbnail) => {
     setError(null);
@@ -30,7 +28,6 @@ export const useSignup = () => {
         displayName: displayName,
         photoURL: imgUrl,
       });
-      
 
       //create user document
 

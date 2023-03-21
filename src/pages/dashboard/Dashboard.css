@@ -35,8 +35,9 @@
 
 .dashboard-project-list {
   padding: 10px;
-  background-color: lightgreen;
-  width: 60vw;
+  /* background-color: lightgreen; */
+  width: 55.5vw;
+  height: auto;
   display: flex;
   flex-direction: column;
 }

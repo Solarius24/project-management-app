@@ -12,13 +12,14 @@ import Navbar from "./components/Navbar";
 import CompletedProjects from "./pages/completed_projects/CompletedProjects";
 //context
 import { useAuthContext } from "./context/AuthContext";
+import Sidebar from "./components/Sidebar";
 
 function App() {
-  const { currentUser } = useAuthContext();
-
+  const currentUser = useAuthContext();
   return (
     <div className="App">
       <BrowserRouter>
+        {currentUser && <Sidebar/>}
         <div className="container">
           <Navbar />
           <Routes>
@@ -50,7 +51,6 @@ function App() {
             ></Route>
           </Routes>
         </div>
-        {/* {user && <OnlineUsers/>} */}
       </BrowserRouter>
     </div>
   );
