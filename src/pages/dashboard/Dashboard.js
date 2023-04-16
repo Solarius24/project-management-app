@@ -8,8 +8,6 @@ import { useAuthContext } from "../../context/AuthContext";
 // components
 import ProjectList from "../../components/ProjectList";
 import ProjectFilter from "./ProjectFilter";
-import Sidebar from "../../components/Sidebar";
-import OnlineUsers from "../../components/OnlineUsers";
 
 export default function Dashboard() {
   const currentUser = useAuthContext();
@@ -49,21 +47,19 @@ export default function Dashboard() {
         }
       })
     : null;
-console.log("Dashboard")
   return (
     <div className="dashboard-container">
-      {/* {currentUser && <Sidebar/>} */}
-      <div className="dashboard-project-list">
-        {error && <p className="error">{error}</p>}
-        {documents && (
+              {documents && (
           <ProjectFilter
             changeFilter={changeFilter}
             currentFilter={currentFilter}
           />
         )}
+      <div className="dashboard-project-list">
+        {error && <p className="error">{error}</p>}
+
         {projects && <ProjectList projects={projects} />}
       </div>
-      {currentUser && <OnlineUsers />}
     </div>
   );
 }

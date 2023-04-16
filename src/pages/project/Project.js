@@ -24,7 +24,6 @@ export default function Project() {
 
   return (
     <div className="project-container">
-      {/* {currentUser && <Sidebar />} */}
       <div className="project-details">
         <ProjectSummary project={document} />
         <ProjectComments project={document} />

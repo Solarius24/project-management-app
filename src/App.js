@@ -13,15 +13,20 @@ import CompletedProjects from "./pages/completed_projects/CompletedProjects";
 //context
 import { useAuthContext } from "./context/AuthContext";
 import Sidebar from "./components/Sidebar";
+import OnlineUsers from "./components/OnlineUsers";
 
 function App() {
   const currentUser = useAuthContext();
+  const onClickHandler = () =>{
+
+  }
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar/>
         {currentUser && <Sidebar/>}
+        {/* <button className="app-button" onClick={onClickHandler}>SHOW USER LIST</button> */}
         <div className="container">
-          <Navbar />
           <Routes>
             <Route
               path="/"
@@ -51,6 +56,7 @@ function App() {
             ></Route>
           </Routes>
         </div>
+        {currentUser && <OnlineUsers />}
       </BrowserRouter>
     </div>
   );

@@ -28,3 +28,22 @@
   .project-summary + .btn {
     margin-top: 20px;
   }
+
+  @media (max-width: 700px){
+
+    .project-summary {
+      background-color: #fff;
+      padding: 30px 10px;
+      border-radius: 4px;
+      width:100vw
+    }
+
+    .project-summary .assigned-users .avatar {
+      margin-right: 0px;
+    
+    }
+     .assigned-users {
+      display: none;
+      margin-top: 20px;
+    }
+  }

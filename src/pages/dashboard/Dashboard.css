@@ -1,15 +1,27 @@
+.dashboard-container {
+  margin-top: 100px;
+  background-color: lightgreen;
+}
+
+.dashboard-project-list {
+  box-sizing: border-box;
+  padding: 10px;
+  overflow-y: scroll;
+  height: calc(100vh - 145px);
+}
+
 .project-filter {
-  margin: 30px auto;
+  position: sticky;
 }
 .project-filter nav {
   display: flex;
+  justify-content: center;
   padding: 10px;
-  background-color: #fff;
+  background-color: #d0dddd;
   border-radius: 4px;
 }
 .project-filter p {
   font-size: 0.9em;
-  margin-right: 10px;
 }
 .project-filter button {
   background: transparent;
@@ -28,16 +40,8 @@
   color: var(--primary-color);
 }
 
-.dashboard-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.dashboard-project-list {
-  padding: 10px;
-  /* background-color: lightgreen; */
-  width: 55.5vw;
-  height: auto;
-  display: flex;
-  flex-direction: column;
+@media(max-width:700px){
+  .dashboard-container  {
+    margin-top: 190px;;
+  }
 }

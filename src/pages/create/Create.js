@@ -9,12 +9,8 @@ import { timestamp } from "../../firebase/config";
 import Select from "react-select";
 import useFirestore from "../../hooks/useFirestore";
 import { useNavigate } from "react-router-dom";
-//components
-import Sidebar from "../../components/Sidebar";
-import OnlineUsers from "../../components/OnlineUsers";
 //context
 import { useAuthContext } from "../../context/AuthContext";
-
 
 const categories = [
   { value: "constriction", label: "Construction" },
@@ -93,7 +89,6 @@ export default function Create() {
 
   return (
     <div className="create-form-container">
-      {/* {currentUser && <Sidebar />} */}
       <div className="create-form">
         <h2 className="page-title">Create a new Project</h2>
         <form onSubmit={handleSubmit}>
@@ -138,13 +133,10 @@ export default function Create() {
               isMulti
             />
           </label>
-
           <button className="btn">Add Project</button>
-
           {formError && <p className="error">{formError}</p>}
         </form>
       </div>
-      {currentUser && <OnlineUsers />}
     </div>
   );
 }

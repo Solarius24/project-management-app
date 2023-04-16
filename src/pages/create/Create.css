@@ -1,10 +1,22 @@
 .create-form {
-  width: 53.7vw;
+  box-sizing: border-box;
+  min-width: 100%;
   height: auto;
   padding: 20px;
   background-color: #9cf;
+  overflow-y: scroll;
+  height:calc(100vh - 100px)
 }
 .create-form-container {
+  margin-top: 100px;;
   display: flex;
   flex-direction: row;
+}
+
+@media(max-width:700px){
+  .create-form-container {
+    margin-top: 190px;;
+    display: flex;
+    flex-direction: row;
+  }
 }

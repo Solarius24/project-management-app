@@ -1,10 +1,19 @@
-.completedProjects-container {
-    display: flex;
-    flex-direction: row;
+.completed-projects-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  background-color: lightgreen;
 }
-.completedProjects-list {
-    width:75.3vw;
-    height: auto;
-    /* background-color: lightgreen; */
-    padding: 10px;
+.completed-projects-list {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  overflow-y: scroll;
+  height: calc(100vh - 100px);
+}
+@media(max-width:700px){
+  .completed-projects-container {
+    margin-top: 190px;
+
+  }
 }
