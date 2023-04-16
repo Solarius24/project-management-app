@@ -16,4 +16,10 @@
     margin-top: 190px;
 
   }
+  .completed-projects-list {
+    height:calc(100vh - 292px)
+  }
+
+
+
 }
