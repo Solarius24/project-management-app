@@ -10,11 +10,19 @@
 }
 
 .login-form {
+  box-sizing: border-box;
   width: 360px;
-  margin: calc((100vh + 100px - 375px)/2) auto;
+  margin: calc((100vh + 100px - 375px) / 2) auto;
   padding: 40px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
   background: #fff;
+}
+
+@media (max-width: 500px) {
+  .login-form {
+    width: 100%;
+    padding: 20px;
+  }
 }

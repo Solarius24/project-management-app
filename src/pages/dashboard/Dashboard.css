@@ -40,14 +40,15 @@
   color: var(--primary-color);
 }
 
-@media (max-width: 590px) {
+@media (max-width: 790px) {
+  .dashboard-container {
+    margin-top: 190px;
+  }
   .dashboard-project-list {
-    height: calc(100vh - 367px);
+    height: calc(100vh - 450px);
   }
   .project-filter nav {
     flex-wrap: wrap;
   }
-  .dashboard-container {
-    margin-top: 190px;
-  }
+
 }

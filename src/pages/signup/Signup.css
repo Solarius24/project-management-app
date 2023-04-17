@@ -18,3 +18,11 @@
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
   background: #fff;
 }
+
+@media (max-width: 500px){
+  .auth-form {
+    width: 100%;
+
+  }
+
+}

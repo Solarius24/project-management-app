@@ -37,7 +37,7 @@ export default function ProjectComments({ project }) {
   return (
     <div className="project-comments">
       <h4>Project Comments</h4>
-      <ul>
+      <ul className="comments-list">
         {project.comments.length > 0 &&
           project.comments.map((comment) => (
             <li key={comment.id}>
