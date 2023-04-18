@@ -11,9 +11,9 @@
 
 .login-form {
   box-sizing: border-box;
-  width: 360px;
+  width: 500px;
   margin: calc((100vh + 100px - 375px) / 2) auto;
-  padding: 40px;
+  padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);

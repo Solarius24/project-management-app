@@ -22,7 +22,7 @@
   }
   .project-details {
     box-sizing: border-box;
-    height: calc(100vh - 340px);
+    height: calc(100svh - 294px);
     overflow-y: scroll;
     display: flex;
     width: 100%;

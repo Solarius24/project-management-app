@@ -10,7 +10,9 @@
 }
 
 /* base styles */
+
 body {
+  /* height: -webkit-fill-available; */
   font-family: Poppins, sans-serif;
   margin: 0;
   font-size: 1.1em;

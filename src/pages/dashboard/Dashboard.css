@@ -45,7 +45,7 @@
     margin-top: 190px;
   }
   .dashboard-project-list {
-    height: calc(100vh - 450px);
+    height: calc(100svh - 368px);
   }
   .project-filter nav {
     flex-wrap: wrap;

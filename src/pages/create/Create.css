@@ -15,7 +15,7 @@
 
 @media (max-width: 700px) {
   .create-form {
-    height:calc(100vh - 340px)
+    height:calc(100svh - 294px)
   }
   .create-form-container {
     margin-top: 190px;
